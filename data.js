@@ -79,7 +79,7 @@ window.QUESTIONS = [
 },
 {
 "n": 4,
-"question": "In the McCulloch–Pitts neuron, the output `y` is forced to 0 if:",
+"question": "The McCulloch–Pitts (MP) neuron takes binary inputs, some of which may be excitatory (contributing to firing) and some inhibitory (able to block firing). The output y is forced to 0 if:",
 "options": [
 {
 "key": "A",
@@ -209,7 +209,7 @@ window.QUESTIONS = [
 },
 {
 "n": 9,
-"question": "In the perceptron model, the bias term w0 equals:",
+"question": "In the perceptron model, the decision boundary can be written as wᵀx + w0 = 0, where w is the weight vector, x the input, and w0 the bias term. If instead the neuron is described by the threshold rule wᵀx ≥ θ (fires when the weighted sum reaches the threshold θ), then the bias term w0 equals:",
 "options": [
 {
 "key": "A",
@@ -235,23 +235,23 @@ window.QUESTIONS = [
 },
 {
 "n": 10,
-"question": "The perceptron learning algorithm updates the weight vector as **w = w + x** when:",
+"question": "In the standard perceptron learning algorithm (PLA) for binary classification, let the positive class be P and the negative class be N, and let w be the weight vector and x be the input feature vector. The algorithm updates w := w + x when:",
 "options": [
 {
 "key": "A",
-"text": "x ∈ P and w·x < 0"
+"text": "x ∈ P and w·x < 0 (misclassified positive example)"
 },
 {
 "key": "B",
-"text": "x ∈ P and w·x ≥ 0"
+"text": "x ∈ P and w·x ≥ 0 (correctly classified positive example)"
 },
 {
 "key": "C",
-"text": "x ∈ N and w·x < 0"
+"text": "x ∈ N and w·x < 0 (correctly classified negative example)"
 },
 {
 "key": "D",
-"text": "x ∈ N and w·x ≥ 0"
+"text": "x ∈ N and w·x ≥ 0 (misclassified negative example)"
 }
 ],
 "correct": [
@@ -261,7 +261,7 @@ window.QUESTIONS = [
 },
 {
 "n": 11,
-"question": "In the PLA convergence proof (with all p normalized so ||p|| = 1), ||w_{t+1}||² increases by at most:",
+"question": "In the perceptron convergence proof (Novikoff's theorem), assume every training pattern p is normalized so that ||p|| = 1, let w_t be the weight vector before the t-th update, and let the margin (minimum distance from the origin to the decision boundary) be denoted by δ. If w_{t+1} = w_t + y_t p is the weight vector after a single update on a misclassified pattern p, then ||w_{t+1}||² increases by at most:",
 "options": [
 {
 "key": "A",
@@ -287,7 +287,7 @@ window.QUESTIONS = [
 },
 {
 "n": 12,
-"question": "In the convergence proof, the lower bound on cos β grows:",
+"question": "In the perceptron convergence proof (Novikoff's theorem), let β be the angle between the current weight vector w_t and the ideal (target) weight vector w*, and let k be the number of update steps taken so far. The proof bounds cos β = (w_t·w*)/(||w_t|| ||w*||) from below by a quantity that grows:",
 "options": [
 {
 "key": "A",
@@ -365,7 +365,7 @@ window.QUESTIONS = [
 },
 {
 "n": 15,
-"question": "A network with a single hidden layer containing 2^n perceptrons and one output perceptron can represent:",
+"question": "Consider a network that takes n binary inputs, has a single hidden layer containing 2^n perceptrons, and a single output perceptron. Such a network can represent:",
 "options": [
 {
 "key": "A",
@@ -391,7 +391,7 @@ window.QUESTIONS = [
 },
 {
 "n": 16,
-"question": "In the standard construction of a 2-input MLP that can represent any Boolean function, the bias of each hidden perceptron is:",
+"question": "A standard 2-input MLP construction for representing any Boolean function uses a hidden perceptron for each minterm (each specific input pattern). Each such hidden perceptron must fire only when both of its inputs are 1 (i.e. it implements the AND of the two inputs). With unit weights and threshold θ, the bias term b is set so that the neuron fires exactly when x1 + x2 ≥ θ. The bias used for each hidden perceptron is:",
 "options": [
 {
 "key": "A",
@@ -417,7 +417,7 @@ window.QUESTIONS = [
 },
 {
 "n": 17,
-"question": "**(Select all that apply)** Which of the following statements about the McCulloch–Pitts neuron are true?",
+"question": "**(Select all that apply)** The McCulloch–Pitts (MP) neuron sums its binary excitatory inputs, compares the total against a fixed threshold θ, and fires (outputs 1) when the sum reaches θ; an active (1) inhibitory input forces the output to 0. Which of the following statements about the MP neuron are true?",
 "options": [
 {
 "key": "A",
@@ -653,7 +653,7 @@ window.QUESTIONS = [
 },
 {
 "n": 26,
-"question": "The gradient of the squared-error loss ½(f(x) − y)² with respect to w for a single sigmoid neuron is:",
+"question": "For a single sigmoid neuron with output f(x) = σ(w·x + b), where w is the weight vector, x the input, b the bias and σ the logistic function, and given the squared-error loss between the neuron's output and target y, the gradient of the loss ½(f(x) − y)² with respect to the weight vector w is:",
 "options": [
 {
 "key": "A",
@@ -705,7 +705,7 @@ window.QUESTIONS = [
 },
 {
 "n": 28,
-"question": "In gradient descent, the parameter update rule is:",
+"question": "In gradient descent, let w_t be the parameter (weight) vector at step t, η the learning rate, and ∇w_t the gradient of the loss with respect to w at step t. The parameter update rule is:",
 "options": [
 {
 "key": "A",
@@ -783,7 +783,7 @@ window.QUESTIONS = [
 },
 {
 "n": 31,
-"question": "**(Select all that apply)** Which of the following statements about the sigmoid neuron are true?",
+"question": "**(Select all that apply)** A sigmoid (logistic) neuron computes output y = σ(z) where z = w·x + w0 is the pre-activation, w is the weight vector, x the input, w0 the bias and σ is the logistic function. Which of the following statements about the sigmoid neuron are true?",
 "options": [
 {
 "key": "A",
@@ -799,7 +799,7 @@ window.QUESTIONS = [
 },
 {
 "key": "D",
-"text": "Its transition is centered at z = −w0."
+"text": "Its transition (from output near 0 to near 1) occurs where the weighted sum w·x equals −w0."
 }
 ],
 "correct": [
@@ -969,7 +969,7 @@ window.QUESTIONS = [
 },
 {
 "n": 38,
-"question": "For a single sigmoid neuron with loss L(w,b) = ½(f(x) − y)², ∂L/∂b equals:",
+"question": "For a single sigmoid neuron with output f(x) = σ(w·x + b) (w = weight vector, x = input, b = bias, σ = logistic function) and squared-error loss L(w,b) = ½(f(x) − y)² against a target y, the partial derivative ∂L/∂b equals:",
 "options": [
 {
 "key": "A",
@@ -1047,7 +1047,7 @@ window.QUESTIONS = [
 },
 {
 "n": 41,
-"question": "In a feedforward network, the pre-activation of layer i is:",
+"question": "In a feedforward neural network, let layer k have weight matrix W_k, bias vector b_k, pre-activation (linear input) a_k, and activation (output) h_k, with h_{k−1} the activations of the previous layer. The pre-activation of layer k is defined as:",
 "options": [
 {
 "key": "A",
@@ -1073,7 +1073,7 @@ window.QUESTIONS = [
 },
 {
 "n": 42,
-"question": "If the output layer has k neurons and the last hidden layer has n neurons, the shape of W_L is:",
+"question": "In a feedforward network, W_L is the weight matrix of the output layer (layer L), which maps the activations of the last hidden layer into the output pre-activations. If the output layer has k neurons and the last hidden layer has n neurons, the shape of W_L is:",
 "options": [
 {
 "key": "A",
@@ -1099,7 +1099,7 @@ window.QUESTIONS = [
 },
 {
 "n": 43,
-"question": "The softmax output for class j is:",
+"question": "In a k-class classification network whose output layer produces pre-activations (logits) a_1, ..., a_k, the softmax output for class j is:",
 "options": [
 {
 "key": "A",
@@ -1125,7 +1125,7 @@ window.QUESTIONS = [
 },
 {
 "n": 44,
-"question": "With one-hot labels, the cross-entropy loss simplifies to:",
+"question": "For a classification network, let ŷ_i be the softmax (predicted) probability of class i, y_i the true label under a one-hot encoding, and ℓ the index of the true class (so y_ℓ = 1 and all other y_i = 0). The cross-entropy loss −Σ_i y_i·log(ŷ_i) then simplifies to:",
 "options": [
 {
 "key": "A",
@@ -1151,7 +1151,7 @@ window.QUESTIONS = [
 },
 {
 "n": 45,
-"question": "The gradient of the cross-entropy loss (with softmax output) with respect to the output pre-activation a_L is:",
+"question": "For a classification network using a softmax output layer with pre-activations (logits) a_L, let ŷ be the vector of softmax probabilities and e(ℓ) be the one-hot vector of the true class ℓ (with 1 at position ℓ and 0 elsewhere). The gradient of the cross-entropy loss with respect to the output pre-activation a_L is:",
 "options": [
 {
 "key": "A",
@@ -1177,7 +1177,7 @@ window.QUESTIONS = [
 },
 {
 "n": 46,
-"question": "∇_{W_k} L(θ) equals:",
+"question": "In backpropagation, consider layer k with weight matrix W_k, pre-activation a_k = W_k·h_{k−1} + b_k (h_{k−1} = activations of the previous layer), and let L(θ) be the loss with θ denoting all learnable parameters. Given the gradient ∇_{a_k}L of the loss with respect to that layer's pre-activation a_k, the gradient ∇_{W_k}L(θ) with respect to W_k equals:",
 "options": [
 {
 "key": "A",
@@ -1203,7 +1203,7 @@ window.QUESTIONS = [
 },
 {
 "n": 47,
-"question": "∇_{b_k} L(θ) equals:",
+"question": "In backpropagation, consider layer k with bias vector b_k, pre-activation a_k = W_k·h_{k−1} + b_k, and loss L(θ) with θ the set of all learnable parameters. Given the gradient ∇_{a_k}L with respect to the layer's pre-activation a_k, the gradient ∇_{b_k}L(θ) with respect to the bias b_k equals:",
 "options": [
 {
 "key": "A",
@@ -1229,7 +1229,7 @@ window.QUESTIONS = [
 },
 {
 "n": 48,
-"question": "The gradient with respect to the hidden layer below is computed as:",
+"question": "In backpropagation, layer k has weight matrix W_k and pre-activation a_k = W_k·h_{k−1} + b_k, where h_{k−1} is the activation (output) of the layer below. Given the gradient ∇_{a_k}L with respect to the pre-activation a_k, the gradient ∇_{h_{k−1}}L with respect to the lower layer's activations h_{k−1} is computed as:",
 "options": [
 {
 "key": "A",
@@ -1255,7 +1255,7 @@ window.QUESTIONS = [
 },
 {
 "n": 49,
-"question": "The derivative of the tanh activation is:",
+"question": "For the tanh activation function evaluated at a pre-activation z, the derivative of tanh with respect to z is:",
 "options": [
 {
 "key": "A",
@@ -1281,7 +1281,7 @@ window.QUESTIONS = [
 },
 {
 "n": 50,
-"question": "In the backpropagation pseudo-code, the loop that computes gradients runs k from:",
+"question": "In the backpropagation pseudo-code for an L-layer network, gradients are computed layer by layer starting from the output layer and moving backward. The loop index k that computes the gradients thus runs:",
 "options": [
 {
 "key": "A",
@@ -1307,7 +1307,7 @@ window.QUESTIONS = [
 },
 {
 "n": 51,
-"question": "For a logistic activation g, g′(z) equals:",
+"question": "For a logistic (sigmoid) activation function g, evaluated at a pre-activation z, the derivative g′(z) equals:",
 "options": [
 {
 "key": "A",
@@ -1333,7 +1333,7 @@ window.QUESTIONS = [
 },
 {
 "n": 52,
-"question": "In backpropagation, the gradient with respect to a_i is obtained from the gradient with respect to h_i by:",
+"question": "For a network layer i, let a_i denote the layer's pre-activation (the linear combination of inputs) and h_i = g(a_i) its activation, where g is the activation function. In backpropagation, the gradient with respect to a_i is obtained from the gradient with respect to h_i by:",
 "options": [
 {
 "key": "A",
@@ -1411,7 +1411,7 @@ window.QUESTIONS = [
 },
 {
 "n": 55,
-"question": "The purpose of the forward pass in backpropagation is to:",
+"question": "In backpropagation, the network alternates a forward pass and a backward pass. The purpose of the forward pass is to:",
 "options": [
 {
 "key": "A",
@@ -1437,7 +1437,7 @@ window.QUESTIONS = [
 },
 {
 "n": 56,
-"question": "**(Select all that apply)** Which of the following statements about the softmax function are true?",
+"question": "**(Select all that apply)** In softmax regression, let the logits be the pre-activation outputs z_1, ..., z_k of the output layer (one per class). The softmax function converts these logits into class probabilities. Which of the following statements about the softmax function are true?",
 "options": [
 {
 "key": "A",
@@ -1569,7 +1569,7 @@ window.QUESTIONS = [
 },
 {
 "n": 61,
-"question": "The momentum update rule is:",
+"question": "In gradient descent with momentum, let w_t be the weight vector at step t, η the learning rate, ∇w_t the gradient of the loss with respect to w at step t, γ the momentum coefficient, and update_t the accumulated update at step t. The momentum update rule is:",
 "options": [
 {
 "key": "A",
@@ -1595,7 +1595,7 @@ window.QUESTIONS = [
 },
 {
 "n": 62,
-"question": "Nesterov Accelerated Gradient differs from momentum-based GD by:",
+"question": "Let w_t be the weight vector at step t, γ the momentum coefficient, and update_{t−1} the accumulated update from the previous step. Nesterov Accelerated Gradient (NAG) differs from standard momentum-based gradient descent by:",
 "options": [
 {
 "key": "A",
@@ -1621,23 +1621,23 @@ window.QUESTIONS = [
 },
 {
 "n": 63,
-"question": "In AdaGrad, a parameter that receives gradients only rarely (its feature is non-zero for very few inputs) will, over training, have an effective learning rate that:",
+"question": "In the AdaGrad optimization algorithm, for each parameter w_i, AdaGrad maintains G_{i,t} = sum_{k=1}^{t} (g_{i,k})^2, where g_{i,k} is the gradient of the loss with respect to w_i at step k, and updates w_{i,t+1} = w_{i,t} - (η / sqrt(G_{i,t} + ε)) * g_{i,t}. For a parameter that receives gradients only rarely (its corresponding feature is non-zero for very few training inputs), its G_{i,t} grows more slowly over time. As a consequence, the effective learning rate for that parameter will:",
 "options": [
 {
 "key": "A",
-"text": "decays faster, because rare gradients are unusually large"
+"text": "decay faster than for frequently updated parameters"
 },
 {
 "key": "B",
-"text": "decays more slowly, so it stays larger than that of a frequently updated parameter"
+"text": "decay more slowly than for frequently updated parameters, so it remains larger"
 },
 {
 "key": "C",
-"text": "remains exactly equal to that of every other parameter"
+"text": "remain exactly equal to the learning rate of every other parameter"
 },
 {
 "key": "D",
-"text": "grows without bound as training proceeds"
+"text": "grow without bound as training proceeds"
 }
 ],
 "correct": [
@@ -1647,7 +1647,7 @@ window.QUESTIONS = [
 },
 {
 "n": 64,
-"question": "Which optimizer adapts the learning rate per-parameter using an ever-growing sum of squared gradients?",
+"question": "Among the optimizers below, which one adapts the learning rate for each parameter individually by accumulating the sum of squared gradients received by that parameter over all past training steps?",
 "options": [
 {
 "key": "A",
@@ -1655,7 +1655,7 @@ window.QUESTIONS = [
 },
 {
 "key": "B",
-"text": "NAG"
+"text": "NAG (Nesterov Accelerated Gradient)"
 },
 {
 "key": "C",
@@ -1663,7 +1663,7 @@ window.QUESTIONS = [
 },
 {
 "key": "D",
-"text": "Vanilla GD"
+"text": "Vanilla GD (gradient descent with a fixed learning rate)"
 }
 ],
 "correct": [
@@ -1673,7 +1673,7 @@ window.QUESTIONS = [
 },
 {
 "n": 65,
-"question": "RMSProp improves over Adagrad by:",
+"question": "Adagrad accumulates squared gradients over all past steps in an ever-growing sum G_t = sum_{k=1}^{t} g_k^2, which causes the learning rate to vanish eventually. RMSProp improves over Adagrad by:",
 "options": [
 {
 "key": "A",
@@ -1681,7 +1681,7 @@ window.QUESTIONS = [
 },
 {
 "key": "B",
-"text": "using the true gradient"
+"text": "using the true gradient instead of squared gradients"
 },
 {
 "key": "C",
@@ -1689,7 +1689,7 @@ window.QUESTIONS = [
 },
 {
 "key": "D",
-"text": "using a decaying (exponentially weighted) average of squared gradients"
+"text": "replacing the growing sum with a decaying (exponentially weighted) average of squared gradients"
 }
 ],
 "correct": [
@@ -1699,11 +1699,11 @@ window.QUESTIONS = [
 },
 {
 "n": 66,
-"question": "Adam's bias-corrected estimates m̂_t and v̂_t divide m_t and v_t by:",
+"question": "In the Adam optimizer, the first moment estimate of the gradient at step t is m_t = β1·m_{t-1} + (1 - β1)·g_t and the second moment estimate is v_t = β2·v_{t-1} + (1 - β2)·g_t^2. To correct the bias introduced by initializing m_0 = 0 and v_0 = 0, the bias-corrected estimates are defined as m̂_t = m_t / (denominator_m) and v̂_t = v_t / (denominator_v). What are these denominators?",
 "options": [
 {
 "key": "A",
-"text": "(1 − β1^t) and (1 − β2^t)"
+"text": "(1 - β1^t) and (1 - β2^t)"
 },
 {
 "key": "B",
@@ -1711,11 +1711,11 @@ window.QUESTIONS = [
 },
 {
 "key": "C",
-"text": "(1 − β) and 1"
+"text": "(1 - β1) and (1 - β2)"
 },
 {
 "key": "D",
-"text": "t"
+"text": "t and t"
 }
 ],
 "correct": [
@@ -1725,7 +1725,7 @@ window.QUESTIONS = [
 },
 {
 "n": 67,
-"question": "Typical default values of β1 and β2 for Adam are:",
+"question": "In the Adam optimizer, β1 is the exponential decay rate for the first moment (mean of gradients) estimate and β2 is the decay rate for the second moment (uncentered variance) estimate. Typical default values used for β1 and β2 are:",
 "options": [
 {
 "key": "A",
@@ -1751,23 +1751,23 @@ window.QUESTIONS = [
 },
 {
 "n": 68,
-"question": "Vanilla (batch) gradient descent makes how many parameter updates per epoch?",
+"question": "In vanilla (full-batch) gradient descent, the gradient is computed over the entire training set before each parameter update. If a dataset has N training examples, how many parameter updates does vanilla gradient descent make per epoch (one full pass over the data)?",
 "options": [
 {
 "key": "A",
-"text": "N"
+"text": "N (one per training example)"
 },
 {
 "key": "B",
-"text": "N/B"
+"text": "N/B, where B is the mini-batch size"
 },
 {
 "key": "C",
-"text": "1"
+"text": "1 (one update after processing all N examples)"
 },
 {
 "key": "D",
-"text": "B"
+"text": "B (one per mini-batch)"
 }
 ],
 "correct": [
@@ -1777,23 +1777,23 @@ window.QUESTIONS = [
 },
 {
 "n": 69,
-"question": "Exponential decay of the learning rate is given by:",
+"question": "When annealing (decaying) the learning rate exponentially over training steps t, the learning rate at step t follows which formula? (Here η is the current learning rate, η0 the initial learning rate, k a small positive decay constant, and t the step number.)",
 "options": [
 {
 "key": "A",
-"text": "η = η0 / (1 + kt)"
+"text": "η = η0 / (1 + k·t)"
 },
 {
 "key": "B",
-"text": "η = η0 − kt"
+"text": "η = η0 - k·t"
 },
 {
 "key": "C",
-"text": "η = kt"
+"text": "η = k·t"
 },
 {
 "key": "D",
-"text": "η = η0^{−kt}"
+"text": "η = η0^(-k·t), i.e. η0 raised to the power -k·t"
 }
 ],
 "correct": [
@@ -1829,7 +1829,7 @@ window.QUESTIONS = [
 },
 {
 "n": 71,
-"question": "Eigenvalues and eigenvectors satisfy:",
+"question": "For a square matrix A, a scalar λ is called an eigenvalue of A if there exists a non-zero vector v such that Av equals λ times v. Which equation defines this relationship?",
 "options": [
 {
 "key": "A",
@@ -1855,7 +1855,7 @@ window.QUESTIONS = [
 },
 {
 "n": 72,
-"question": "Eigenvectors corresponding to distinct eigenvalues of a matrix are:",
+"question": "For a square matrix A, eigenvectors corresponding to distinct (different) eigenvalues are:",
 "options": [
 {
 "key": "A",
@@ -1881,7 +1881,7 @@ window.QUESTIONS = [
 },
 {
 "n": 73,
-"question": "Eigenvectors of a real symmetric matrix are:",
+"question": "For a real symmetric matrix, the eigenvectors corresponding to distinct eigenvalues are:",
 "options": [
 {
 "key": "A",
@@ -1907,7 +1907,7 @@ window.QUESTIONS = [
 },
 {
 "n": 74,
-"question": "For a real symmetric matrix A, the vector that maximizes xᵀAx subject to ||x|| = 1 is:",
+"question": "For a real symmetric matrix A, which vector x maximizes the quadratic form xᵀAx, subject to the constraint that x has unit norm (||x|| = 1)?",
 "options": [
 {
 "key": "A",
@@ -1933,7 +1933,7 @@ window.QUESTIONS = [
 },
 {
 "n": 75,
-"question": "In the eigenvalue decomposition A = UΛU⁻¹, U⁻¹ exists if:",
+"question": "In the eigenvalue decomposition A = UΛU⁻¹ of a square matrix A, U is the matrix whose columns are the eigenvectors of A and Λ is the diagonal matrix of eigenvalues. The inverse U⁻¹ exists if:",
 "options": [
 {
 "key": "A",
@@ -1959,7 +1959,7 @@ window.QUESTIONS = [
 },
 {
 "n": 76,
-"question": "**(Select all that apply)** Which of the following are true about the dominant eigenvalue of a stochastic matrix (columns sum to 1)?",
+"question": "**(Select all that apply)** A stochastic matrix A is a square matrix whose columns each sum to 1 (it describes transitions of a probability distribution, so A applied to a probability vector yields another probability vector). Which of the following statements about the dominant eigenvalue of such a matrix A (the eigenvalue of largest magnitude) are true?",
 "options": [
 {
 "key": "A",
@@ -1986,7 +1986,7 @@ window.QUESTIONS = [
 },
 {
 "n": 77,
-"question": "If the dominant eigenvalue has magnitude |λ_d| < 1, then Aⁿv0:",
+"question": "For a square matrix A with dominant eigenvalue λ_d (the eigenvalue of largest magnitude) and an initial vector v0, if |λ_d| < 1, then the sequence Aⁿv0 (A raised to the nth power applied to v0, as n grows):",
 "options": [
 {
 "key": "A",
@@ -2012,7 +2012,7 @@ window.QUESTIONS = [
 },
 {
 "n": 78,
-"question": "Using momentum with γ = 0.9, η = 0.01, current gradient 0.2 and previous update 0.1, the new update is:",
+"question": "In gradient descent with momentum, the update is computed as: update_t = γ·update_{t-1} + η·∇w_t, and then the weights are updated as w_{t+1} = w_t - update_t. Using γ = 0.9 (momentum coefficient), η = 0.01 (learning rate), a current gradient ∇w_t = 0.2, and a previous update update_{t-1} = 0.1, what is the new update_t (the amount subtracted from w_t)?",
 "options": [
 {
 "key": "A",
@@ -2090,7 +2090,7 @@ window.QUESTIONS = [
 },
 {
 "n": 81,
-"question": "The covariance matrix of zero-mean data X (rows = data points) is:",
+"question": "Let X be an m × d data matrix of zero-mean (mean-centered) data in which each of the m rows is one data point and each of the d columns is a feature. What is the formula for the d × d covariance matrix of the features? (Here m is the number of data points.)",
 "options": [
 {
 "key": "A",
@@ -2116,7 +2116,7 @@ window.QUESTIONS = [
 },
 {
 "n": 82,
-"question": "In PCA, the principal components are the eigenvectors of:",
+"question": "In Principal Component Analysis (PCA), given the mean-centered data matrix X, the principal components (the directions of maximum variance) are the eigenvectors of:",
 "options": [
 {
 "key": "A",
@@ -2142,7 +2142,7 @@ window.QUESTIONS = [
 },
 {
 "n": 83,
-"question": "Which single statement best captures the interpretations of PCA?",
+"question": "Which single statement best captures the interpretations of Principal Component Analysis (PCA)?",
 "options": [
 {
 "key": "A",
@@ -2168,7 +2168,7 @@ window.QUESTIONS = [
 },
 {
 "n": 84,
-"question": "If the eigenvalue corresponding to the i-th principal component is λ_i and there are m data points, the variance along that dimension is:",
+"question": "In PCA, if the eigenvalue corresponding to the i-th principal component is λ_i and there are m data points (the data matrix is scaled by 1/m when forming the covariance matrix), the variance of the data along that principal component is:",
 "options": [
 {
 "key": "A",
@@ -2194,7 +2194,7 @@ window.QUESTIONS = [
 },
 {
 "n": 85,
-"question": "To reconstruct data with minimum squared error using k components, one should keep:",
+"question": "When reconstructing data from its PCA projection using only k principal components, to minimize the squared reconstruction error one should keep:",
 "options": [
 {
 "key": "A",
@@ -2220,7 +2220,7 @@ window.QUESTIONS = [
 },
 {
 "n": 86,
-"question": "The eigenvectors of XᵀX are orthogonal because:",
+"question": "In PCA, the eigenvectors of the matrix XᵀX (where X is the mean-centered data matrix) are orthogonal to each other because:",
 "options": [
 {
 "key": "A",
@@ -2272,7 +2272,7 @@ window.QUESTIONS = [
 },
 {
 "n": 88,
-"question": "The singular value decomposition of a real matrix A ∈ ℝ^{m×n} is:",
+"question": "For a real matrix A of size m × n (with m rows and n columns), the singular value decomposition (SVD) expresses A as:",
 "options": [
 {
 "key": "A",
@@ -2298,7 +2298,7 @@ window.QUESTIONS = [
 },
 {
 "n": 89,
-"question": "In the SVD A = UΣVᵀ, the matrix Σ is:",
+"question": "In the singular value decomposition A = UΣVᵀ of a real matrix A, where U and V are orthogonal matrices and Σ holds the singular values on its diagonal, the matrix Σ is:",
 "options": [
 {
 "key": "A",
@@ -2324,7 +2324,7 @@ window.QUESTIONS = [
 },
 {
 "n": 90,
-"question": "For A = UΣVᵀ, the columns of V are the eigenvectors of:",
+"question": "In the singular value decomposition A = UΣVᵀ of a real matrix A (where U and V are orthogonal matrices and Σ is diagonal), the columns of V are the eigenvectors of:",
 "options": [
 {
 "key": "A",
@@ -2350,7 +2350,7 @@ window.QUESTIONS = [
 },
 {
 "n": 91,
-"question": "The singular values σ_i are related to the eigenvalues λ_i of AᵀA by:",
+"question": "In the singular value decomposition A = UΣVᵀ of a real matrix A, the singular values σ_i are related to the eigenvalues λ_i of the matrix AᵀA by:",
 "options": [
 {
 "key": "A",
@@ -2376,7 +2376,7 @@ window.QUESTIONS = [
 },
 {
 "n": 92,
-"question": "The best rank-k approximation of A (in the Frobenius norm) is:",
+"question": "Given the singular value decomposition A = UΣVᵀ of a matrix A, where σ_i is the i-th singular value and u_i, v_i are the i-th columns of U and V respectively, the best rank-k approximation of A (in the Frobenius norm, i.e. the rank-k matrix closest to A) is:",
 "options": [
 {
 "key": "A",
@@ -2402,7 +2402,7 @@ window.QUESTIONS = [
 },
 {
 "n": 93,
-"question": "A 2D point x = [3.3, 3] is expressed in the basis u1 = [1,1]/√2, u2 = [−1,1]/√2. The coefficient α1 = xᵀu1 is:",
+"question": "A 2D point x = [3.3, 3] is projected onto the unit basis vector u1 = [1,1]/√2 (one of the PCA-style basis directions). The coefficient α1 = xᵀu1 of x along u1 is:",
 "options": [
 {
 "key": "A",
@@ -2428,7 +2428,7 @@ window.QUESTIONS = [
 },
 {
 "n": 94,
-"question": "In the previous question, reconstructing x using only α1u1 (k = 1) gives approximately:",
+"question": "The 2D point x = [3.3, 3] is projected onto the unit vector u1 = [1,1]/√2, giving the coefficient α1 = xᵀu1 = 6.3/√2 ≈ 4.455. Reconstructing x using only this single component (that is, using k = 1 and the approximation α1·u1) gives approximately:",
 "options": [
 {
 "key": "A",
@@ -2454,7 +2454,7 @@ window.QUESTIONS = [
 },
 {
 "n": 95,
-"question": "**(Select all that apply)** Which of the following are true about PCA?",
+"question": "**(Select all that apply)** Which of the following are true about Principal Component Analysis (PCA)?",
 "options": [
 {
 "key": "A",
@@ -2508,7 +2508,7 @@ window.QUESTIONS = [
 },
 {
 "n": 97,
-"question": "Discarding the principal components with the smallest eigenvalues minimizes:",
+"question": "In PCA, discarding the principal components that have the smallest eigenvalues (i.e. keeping only the leading components) minimizes:",
 "options": [
 {
 "key": "A",
@@ -2586,7 +2586,7 @@ window.QUESTIONS = [
 },
 {
 "n": 100,
-"question": "The Frobenius norm of a matrix A is:",
+"question": "For a matrix A with entries a_ij (i = row index, j = column index), the Frobenius norm of A is defined as:",
 "options": [
 {
 "key": "A",
@@ -2612,7 +2612,7 @@ window.QUESTIONS = [
 },
 {
 "n": 101,
-"question": "An undercomplete autoencoder has:",
+"question": "In an autoencoder, let x denote the input vector and h the hidden (bottleneck) representation produced by the encoder. An undercomplete autoencoder has:",
 "options": [
 {
 "key": "A",
@@ -2638,7 +2638,7 @@ window.QUESTIONS = [
 },
 {
 "n": 102,
-"question": "An overcomplete autoencoder risks:",
+"question": "In an autoencoder, let x be the input vector and h the hidden (bottleneck) representation. An overcomplete autoencoder (one with dim(h) > dim(x)) risks:",
 "options": [
 {
 "key": "A",
@@ -2768,7 +2768,7 @@ window.QUESTIONS = [
 },
 {
 "n": 107,
-"question": "In the linear autoencoder ↔ PCA equivalence, the optimal encoder matrix W equals V (the right singular vectors), which are also the:",
+"question": "In the equivalence between a linear autoencoder and PCA, let X be the (normalized) data matrix and V the right singular vectors from the singular value decomposition of X. The optimal encoder matrix W equals V, and these columns of V are also the:",
 "options": [
 {
 "key": "A",
@@ -2820,7 +2820,7 @@ window.QUESTIONS = [
 },
 {
 "n": 109,
-"question": "In a denoising autoencoder with corruption P(x̃ = 0 | x) = q and P(x̃ = x | x) = 1 − q, a value q = 0 corresponds to:",
+"question": "In a denoising autoencoder, let x be the original input and x̃ the corrupted version fed to the network. The corruption process sets each input value to 0 with probability q and leaves it unchanged otherwise, i.e. P(x̃ = 0 | x) = q and P(x̃ = x | x) = 1 - q. A value of q = 0 corresponds to:",
 "options": [
 {
 "key": "A",
@@ -2872,7 +2872,7 @@ window.QUESTIONS = [
 },
 {
 "n": 111,
-"question": "The sparsity penalty in sparse autoencoders is a KL-divergence term between:",
+"question": "In a sparse autoencoder, the sparsity penalty is a Kullback–Leibler (KL) divergence term computed between which two quantities? (Here ρ is the desired/target average activation of a hidden unit and ρ̂_l is that hidden unit's actual average activation over the training set.)",
 "options": [
 {
 "key": "A",
@@ -2924,7 +2924,7 @@ window.QUESTIONS = [
 },
 {
 "n": 113,
-"question": "Tying the weights of an autoencoder means:",
+"question": "Let W be the encoder weight matrix and W* the (separate) decoder weight matrix of an autoencoder. Tying the weights of an autoencoder means setting W* to:",
 "options": [
 {
 "key": "A",
@@ -2950,7 +2950,7 @@ window.QUESTIONS = [
 },
 {
 "n": 114,
-"question": "**(Select all that apply)** Which of the following regularization terms can be added to an autoencoder's objective?",
+"question": "**(Select all that apply)** In an autoencoder's training objective, θ denotes the set of parameters (encoder and decoder weights and biases) and the objective is typically a reconstruction loss plus possibly some regularization terms. Which of the following terms can be added to that objective?",
 "options": [
 {
 "key": "A",
@@ -2978,7 +2978,7 @@ window.QUESTIONS = [
 },
 {
 "n": 115,
-"question": "Visualizing a hidden neuron of an autoencoder that is maximally fired by the input x = W1/√(W1ᵀW1) shows that:",
+"question": "For a hidden linear neuron in an autoencoder whose weight (filter) vector is W1, the input pattern that maximally excites it (in the direction of its weights, normalized to unit norm) is x = W1 / √(W1ᵀW1). Visualizing this x for each hidden neuron shows that:",
 "options": [
 {
 "key": "A",
@@ -3004,7 +3004,7 @@ window.QUESTIONS = [
 },
 {
 "n": 116,
-"question": "A denoising autoencoder trained with more noise (larger q) tends to learn filters that are:",
+"question": "In a denoising autoencoder, the corruption probability q is the probability that each input value is set to zero (see the earlier question on the corruption process). Training with more noise (a larger q) tends to make the learned filters:",
 "options": [
 {
 "key": "A",
@@ -3082,7 +3082,7 @@ window.QUESTIONS = [
 },
 {
 "n": 119,
-"question": "The binary cross-entropy reconstruction loss is minimized when:",
+"question": "For a binary autoencoder, let x_ij be the j-th input value of the i-th binary training example and x̂_ij the corresponding reconstruction produced by the network (a value in (0, 1)). The binary cross-entropy reconstruction loss is minimized when:",
 "options": [
 {
 "key": "A",
@@ -3134,7 +3134,7 @@ window.QUESTIONS = [
 },
 {
 "n": 121,
-"question": "The decomposition of expected squared error is:",
+"question": "The standard bias–variance decomposition of a model's expected squared prediction error at a test point is:",
 "options": [
 {
 "key": "A",
@@ -3212,7 +3212,7 @@ window.QUESTIONS = [
 },
 {
 "n": 124,
-"question": "L2 regularization adds which term to the loss?",
+"question": "L2 regularization penalizes large weights by adding a penalty to the loss. Let w be the vector of learnable weights and α the regularization strength (a positive constant). Which term is added to the loss?",
 "options": [
 {
 "key": "A",
@@ -3238,7 +3238,7 @@ window.QUESTIONS = [
 },
 {
 "n": 125,
-"question": "The gradient of the L2-regularized loss adds which term to the gradient?",
+"question": "When the loss is augmented with the L2 penalty α||w||² (w = weight vector, α = regularization strength), the gradient of the regularized loss with respect to w gains which additional term?",
 "options": [
 {
 "key": "A",
@@ -3264,7 +3264,7 @@ window.QUESTIONS = [
 },
 {
 "n": 126,
-"question": "If α is set too large in L2 regularization, the model may:",
+"question": "In L2 regularization, α is the regularization strength that controls how heavily large weights are penalized. If α is set too large, the model may:",
 "options": [
 {
 "key": "A",
@@ -3370,7 +3370,7 @@ window.QUESTIONS = [
 },
 {
 "n": 130,
-"question": "Dropout during training randomly:",
+"question": "In dropout regularization, p denotes the retention (keep) probability of a unit. During training, dropout randomly:",
 "options": [
 {
 "key": "A",
@@ -3396,7 +3396,7 @@ window.QUESTIONS = [
 },
 {
 "n": 131,
-"question": "Typical dropout retention probabilities are:",
+"question": "In dropout, p denotes the retention (keep) probability of a unit. Typical values of p used in practice are:",
 "options": [
 {
 "key": "A",
@@ -3526,7 +3526,7 @@ window.QUESTIONS = [
 },
 {
 "n": 136,
-"question": "In bagging with k models, individual variance V and covariance C, the mse of the averaged predictor is:",
+"question": "In bagging with k models, suppose each individual model's prediction has variance V and every pair of models has covariance C. The mean squared error of the averaged (ensembled) predictor is:",
 "options": [
 {
 "key": "A",
@@ -3552,7 +3552,7 @@ window.QUESTIONS = [
 },
 {
 "n": 137,
-"question": "Adding noise to the outputs (soft targets) with parameter ε:",
+"question": "In output (label) smoothing with a small parameter ε, each one-hot target is replaced by a soft target: the true class keeps probability 1 - ε and the remaining probability ε is spread over the other classes. Doing this:",
 "options": [
 {
 "key": "A",
@@ -3890,7 +3890,7 @@ window.QUESTIONS = [
 },
 {
 "n": 150,
-"question": "Xavier initialization scales weights by:",
+"question": "For a layer with n input neurons (fan-in = n), Xavier (Glorot) initialization draws the weights from a distribution whose standard deviation is proportional to:",
 "options": [
 {
 "key": "A",
@@ -3968,7 +3968,7 @@ window.QUESTIONS = [
 },
 {
 "n": 153,
-"question": "For a layer with 100 input neurons, Xavier initialization uses a weight variance of approximately:",
+"question": "Xavier initialization sets the variance of a layer's weights to approximately 1/n, where n is the number of input neurons to that layer. For a layer with 100 input neurons, the weight variance used is approximately:",
 "options": [
 {
 "key": "A",
@@ -3994,7 +3994,7 @@ window.QUESTIONS = [
 },
 {
 "n": 154,
-"question": "Batch normalization computes the normalization statistics from:",
+"question": "Batch normalization normalizes the pre-activations of a layer using statistics (mean and variance) computed from:",
 "options": [
 {
 "key": "A",
@@ -4020,7 +4020,7 @@ window.QUESTIONS = [
 },
 {
 "n": 155,
-"question": "After standardizing pre-activations, batch normalization applies:",
+"question": "Batch normalization first standardizes a layer's pre-activations across the mini-batch to produce standardized values ŝ (zero mean, unit variance). It then applies which transformation to ŝ, with γ and β being learnable parameters?",
 "options": [
 {
 "key": "A",
@@ -4152,7 +4152,7 @@ window.QUESTIONS = [
 },
 {
 "n": 160,
-"question": "In the activation-variance analysis, Var(s_k) = [n·Var(w)]^k · Var(x). To keep this stable we want:",
+"question": "In the activation-variance analysis of a deep network, let n be the number of input neurons to a layer, Var(w) the variance of its weights, Var(x) the variance of its input, and s_k the summed input (pre-activation) at layer k. The analysis yields Var(s_k) = [n·Var(w)]^k · Var(x). To keep the activation variance stable (neither exploding nor vanishing) across layers, we want:",
 "options": [
 {
 "key": "A",
@@ -4282,7 +4282,7 @@ window.QUESTIONS = [
 },
 {
 "n": 165,
-"question": "PMI(w, c) is defined as:",
+"question": "In word embeddings, let w be a target word and c a context word, with p(c|w) the conditional probability of context word c given word w and p(c) the marginal probability of c. The pointwise mutual information PMI(w, c) is defined as:",
 "options": [
 {
 "key": "A",
@@ -4308,7 +4308,7 @@ window.QUESTIONS = [
 },
 {
 "n": 166,
-"question": "Truncated SVD applied to the (PPMI) co-occurrence matrix is used to:",
+"question": "Truncated SVD applied to the positive pointwise mutual information (PPMI) co-occurrence matrix (i.e. keeping only the top singular values) is used to:",
 "options": [
 {
 "key": "A",
@@ -4334,7 +4334,7 @@ window.QUESTIONS = [
 },
 {
 "n": 167,
-"question": "After SVD, low-dimensional word representations are taken from:",
+"question": "After applying truncated SVD X = UΣVᵀ to the co-occurrence (or PPMI) matrix X, the low-dimensional word representations (word embeddings) are taken from:",
 "options": [
 {
 "key": "A",
@@ -4412,7 +4412,7 @@ window.QUESTIONS = [
 },
 {
 "n": 170,
-"question": "In the CBOW update v_w = v_w + η·u_c(1 − ŷ_w), if ŷ_w ≈ 1 then:",
+"question": "In the Continuous Bag of Words (CBOW) word2vec model, the embedding vector v_w of a target word w is updated by v_w := v_w + η·u_c·(1 − ŷ_w), where η is the learning rate, u_c is a context vector, and ŷ_w is the model's predicted probability for word w. If ŷ_w ≈ 1 (the model already predicts the word well), then:",
 "options": [
 {
 "key": "A",
@@ -4464,7 +4464,7 @@ window.QUESTIONS = [
 },
 {
 "n": 172,
-"question": "In negative sampling, negative context words are sampled from a distribution with exponent:",
+"question": "In negative sampling (used in word2vec), negative context words are sampled from the unigram word distribution raised to a power. The exponent used in this distribution is:",
 "options": [
 {
 "key": "A",
@@ -4490,7 +4490,7 @@ window.QUESTIONS = [
 },
 {
 "n": 173,
-"question": "With hierarchical softmax, the cost of computing p(w | v_c) is proportional to:",
+"question": "In hierarchical softmax, words are arranged as leaves of a binary tree and π(w) denotes the path from the root to the leaf for word w. The cost of computing p(w | v_c) (the probability of word w given context vector v_c) is proportional to:",
 "options": [
 {
 "key": "A",
@@ -4516,7 +4516,7 @@ window.QUESTIONS = [
 },
 {
 "n": 174,
-"question": "GloVe is trained so that word vectors and biases satisfy:",
+"question": "In GloVe, let v_i be the word vector for word i, b_i its bias term, and X_ij the number of times word j appears in the context of word i in the corpus. GloVe is trained so that the relationship between word vectors, biases, and co-occurrence counts satisfies:",
 "options": [
 {
 "key": "A",
@@ -4648,7 +4648,7 @@ window.QUESTIONS = [
 },
 {
 "n": 179,
-"question": "In the sentence \"government announces new education policy\" with a context window of 1, how many context contributions does the word \"education\" make?",
+"question": "Consider the sentence \"government announces new education policy\". With a context window of 1 (each word is treated as a center word and paired with the immediate word on its left and the immediate word on its right), how many (center word, context word) pairs does the word \"education\" contribute?",
 "options": [
 {
 "key": "A",
@@ -4804,7 +4804,7 @@ window.QUESTIONS = [
 },
 {
 "n": 185,
-"question": "The output size of a convolution is given by:",
+"question": "In a convolutional layer, let W1 be the input spatial width, F the filter (kernel) size, P the padding and S the stride. The output spatial size of the convolution is given by:",
 "options": [
 {
 "key": "A",
@@ -5038,7 +5038,7 @@ window.QUESTIONS = [
 },
 {
 "n": 194,
-"question": "Which technique visualizes the influence of input pixels on a neuron?",
+"question": "Let x_i denote an input pixel and h_j the activation of a neuron in a CNN. Which technique visualizes the influence of input pixels on that neuron?",
 "options": [
 {
 "key": "A",
@@ -5246,7 +5246,7 @@ window.QUESTIONS = [
 },
 {
 "n": 202,
-"question": "The RNN hidden-state update (ignoring the bias) is:",
+"question": "In a vanilla RNN, let x_i be the input at time step i, s_i the hidden state at step i (with s_{i−1} the previous hidden state), U the input-to-hidden weight matrix, W the hidden-to-hidden (recurrent) weight matrix, and σ the activation function. Ignoring the bias, the hidden-state update is:",
 "options": [
 {
 "key": "A",
@@ -5376,7 +5376,7 @@ window.QUESTIONS = [
 },
 {
 "n": 207,
-"question": "In the bound ||∂s_t/∂s_k|| ≤ (γλ)^{t−k}, λ is:",
+"question": "In the analysis of gradient flow in RNNs, the bound ||∂s_t/∂s_k|| ≤ (γλ)^{t−k} is used, where s_t and s_k are the hidden states at time steps t and k (with t > k), W is the recurrent weight matrix, and γ is an upper bound on the derivative of the activation function. The quantity λ in this bound is:",
 "options": [
 {
 "key": "A",
@@ -5402,7 +5402,7 @@ window.QUESTIONS = [
 },
 {
 "n": 208,
-"question": "Vanishing gradients occur when:",
+"question": "In RNNs the gradient magnitude scales roughly like (γλ)^{t−k} (γ = bound on the activation derivative, λ = largest eigenvalue/norm of the recurrent weight matrix W). Vanishing gradients occur when:",
 "options": [
 {
 "key": "A",
@@ -5428,7 +5428,7 @@ window.QUESTIONS = [
 },
 {
 "n": 209,
-"question": "For a logistic activation, the bound on σ′(a_j) used in the analysis is:",
+"question": "For a logistic (sigmoid) activation function σ, the upper bound on its derivative σ′(a_j) (where a_j is a pre-activation) that is used in the vanishing-gradient analysis is:",
 "options": [
 {
 "key": "A",
@@ -5506,7 +5506,7 @@ window.QUESTIONS = [
 },
 {
 "n": 212,
-"question": "The LSTM cell-state update is:",
+"question": "In an LSTM cell, let i_t be the input gate, f_t the forget gate, s̃_t the candidate (new) cell state, and s_{t−1} the previous cell state, with ⊙ denoting element-wise multiplication. The cell-state update is:",
 "options": [
 {
 "key": "A",
@@ -5532,7 +5532,7 @@ window.QUESTIONS = [
 },
 {
 "n": 213,
-"question": "The LSTM hidden output h_t is:",
+"question": "In an LSTM cell, let o_t be the output gate, s_t the current cell state, and σ the logistic (sigmoid) function, with ⊙ denoting element-wise multiplication. The hidden output h_t of the cell is:",
 "options": [
 {
 "key": "A",
@@ -5636,7 +5636,7 @@ window.QUESTIONS = [
 },
 {
 "n": 217,
-"question": "**(Select all that apply)** Which of the following statements about LSTM vs GRU are true?",
+"question": "**(Select all that apply)** In recurrent networks, let s_{t−1} denote the previous hidden state. Which of the following statements about LSTM vs GRU architectures are true?",
 "options": [
 {
 "key": "A",
@@ -5768,7 +5768,7 @@ window.QUESTIONS = [
 },
 {
 "n": 222,
-"question": "In the image captioning model covered in the course, the decoder predicts the word at index j at time step t given the previously generated words and the image feature fc7. The training loss at step t is:",
+"question": "In an image captioning model, let fc7 be the image feature vector extracted by a CNN, let y_1^{t−1} denote the previously generated words, and let y_t = j mean the t-th output word is vocabulary word j. The training loss L_t(θ) at step t is the negative log-likelihood of the true word given the image and previous words, namely:",
 "options": [
 {
 "key": "A",
@@ -5820,7 +5820,7 @@ window.QUESTIONS = [
 },
 {
 "n": 224,
-"question": "The attention weight α_jt is obtained by:",
+"question": "In the attention mechanism of a sequence-to-sequence model, let e_jt be the alignment (score) between the encoder state at position j and the decoder at step t, and α_jt the resulting attention weight. The attention weight α_jt is obtained by:",
 "options": [
 {
 "key": "A",
@@ -5846,7 +5846,7 @@ window.QUESTIONS = [
 },
 {
 "n": 225,
-"question": "In the course's attention formulation, the alignment score is:",
+"question": "In the attention formulation (Bahdanau-style), let s_{t−1} be the previous decoder hidden state, c_j the encoder hidden state (annotation) at input position j, and V_att, U_att, W_att the learnable attention parameters. The alignment score e_jt is computed as:",
 "options": [
 {
 "key": "A",
@@ -5872,7 +5872,7 @@ window.QUESTIONS = [
 },
 {
 "n": 226,
-"question": "In attention, the context vector c_t is:",
+"question": "In attention-based sequence models, the context vector c_t (used by the decoder at step t) is computed as:",
 "options": [
 {
 "key": "A",
@@ -6002,7 +6002,7 @@ window.QUESTIONS = [
 },
 {
 "n": 231,
-"question": "Why is the dot product scaled by 1/√d_k in attention?",
+"question": "In scaled dot-product attention, d_k denotes the dimension of the query and key vectors. The dot product of the query and key is scaled by 1/√d_k because:",
 "options": [
 {
 "key": "A",
@@ -6054,7 +6054,7 @@ window.QUESTIONS = [
 },
 {
 "n": 233,
-"question": "In attention over images, instead of using the fc7 layer, one typically uses:",
+"question": "In image captioning with attention, instead of using a single global image feature such as the fc7 layer of a CNN, one typically uses:",
 "options": [
 {
 "key": "A",
