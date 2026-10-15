@@ -1,0 +1,149 @@
+:root {
+  --bg: #111111;
+  --fg: #e8e8e8;
+  --muted: #999999;
+  --panel: #1a1a1a;
+  --line: #3a3a3a;
+  --green: #1f7a3d;
+  --green-line: #2ea043;
+  --red: #8b1a1a;
+  --red-line: #d14343;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  line-height: 1.55;
+  font-size: 29px;
+}
+
+#app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 43px 36px 100px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 25px;
+  padding-bottom: 22px;
+  border-bottom: 2px solid var(--line);
+  margin-bottom: 47px;
+}
+
+.q {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 40px;
+}
+
+code {
+  background: #262626;
+  padding: 2px 9px;
+  border-radius: 5px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  padding: 22px 25px;
+  cursor: pointer;
+}
+
+.option input {
+  width: 26px;
+  height: 26px;
+  margin: 9px 0 0;
+  accent-color: var(--fg);
+}
+
+.option .key {
+  color: var(--muted);
+  margin-right: 4px;
+}
+
+.option.selected {
+  background: #2e2e2e;
+  border-color: var(--fg);
+}
+
+.option.selected .key {
+  color: var(--fg);
+}
+
+.option.correct {
+  background: var(--green);
+  border-color: var(--green-line);
+}
+
+.option.wrong {
+  background: var(--red);
+  border-color: var(--red-line);
+}
+
+.option.reveal {
+  border-color: var(--green-line);
+}
+
+.option.reveal .key {
+  color: var(--green-line);
+}
+
+.option.locked {
+  cursor: default;
+}
+
+#feedback {
+  margin: 36px 0 0;
+  font-size: 29px;
+  font-weight: 600;
+  min-height: 1px;
+}
+
+#feedback.ok { color: var(--green-line); }
+#feedback.bad { color: var(--red-line); }
+
+.controls {
+  margin-top: 40px;
+  display: flex;
+  gap: 22px;
+}
+
+button {
+  font: inherit;
+  background: var(--panel);
+  color: var(--fg);
+  border: 2px solid var(--line);
+  padding: 18px 36px;
+  cursor: pointer;
+}
+
+button:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+.score {
+  font-size: 36px;
+  margin: 14px 0;
+}
+
+.score b { font-size: 43px; }
+
+.score.good b { color: var(--green-line); }
+.score.bad b { color: var(--red-line); }
