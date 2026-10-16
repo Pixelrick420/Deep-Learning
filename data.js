@@ -3290,7 +3290,7 @@ window.QUESTIONS = [
 },
 {
 "n": 127,
-"question": "**(Select all that apply)** Which of the following are forms of regularization covered in the course?",
+"question": "**(Select all that apply)** Which of the following are ways to prevent overfitting?",
 "options": [
 {
 "key": "A",
