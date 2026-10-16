@@ -257,7 +257,6 @@
       if (a.correct) right++;
       else wrong++;
     });
-    var totalAnswered = right + wrong;
 
     var title = document.createElement("h1");
     title.className = "q";
@@ -266,13 +265,7 @@
 
     var total = document.createElement("p");
     total.className = "score";
-    total.innerHTML =
-      "You answered <b>" +
-      right +
-      "</b> of " +
-      totalAnswered +
-      " correctly out of " +
-      currentQuestions.length;
+    total.innerHTML = "<b>" + right + "</b> out of " + currentQuestions.length + " correct";
     main.appendChild(total);
 
     var c = document.createElement("p");
@@ -314,6 +307,16 @@
       render();
     });
     controls.appendChild(restart);
+
+    var home = document.createElement("button");
+    home.textContent = "Home";
+    home.addEventListener("click", function () {
+      state.mode = null;
+      save();
+      render();
+    });
+    controls.appendChild(home);
+
     main.appendChild(controls);
   }
 
