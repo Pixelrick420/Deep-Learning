@@ -1,18 +1,35 @@
 (function () {
   "use strict";
 
-  var KEY = "dlmcq.v1";
+  var KEY = "dlmcq.v2";
   var Q = window.QUESTIONS || [];
 
   var progressEl = document.getElementById("progress");
   var main = document.getElementById("main");
+  var backBtn = document.getElementById("backBtn");
 
   function load() {
     try {
       var s = JSON.parse(localStorage.getItem(KEY));
-      if (s && typeof s.index === "number" && s.answers) return s;
+      if (s && s.answers) {
+        if (typeof s.index === "number" && !s.mode) {
+          return {
+            mode: "full",
+            index: s.index,
+            answers: s.answers,
+            week: s.week,
+          };
+        }
+        return s;
+      }
     } catch (e) {}
-    return { index: 0, answers: {} };
+    return {
+      mode: null,
+      lastMode: null,
+      lastWeek: null,
+      index: 0,
+      answers: {},
+    };
   }
 
   function save() {
@@ -22,6 +39,12 @@
   }
 
   var state = load();
+  var currentQuestions = [];
+  if (state.mode === "full") {
+    currentQuestions = Q.slice();
+  } else if (state.mode === "week" && state.week) {
+    currentQuestions = getWeekQuestions(state.week);
+  }
 
   function esc(s) {
     return String(s).replace(/[&<>"]/g, function (c) {
@@ -50,11 +73,73 @@
     }
   }
 
+  function getWeekQuestions(weekNum) {
+    var start = (weekNum - 1) * 20 + 1;
+    var end = weekNum * 20;
+    return Q.filter(function (q) {
+      return q.n >= start && q.n <= end;
+    });
+  }
+
+  function renderHome() {
+    if (backBtn) backBtn.style.display = "none";
+    progressEl.textContent = "Quiz Options";
+    main.innerHTML = "";
+
+    var h = document.createElement("h1");
+    h.className = "q";
+    h.textContent = "Choose a Test";
+    main.appendChild(h);
+
+    var options = document.createElement("div");
+    options.className = "home-options";
+
+    var fullBtn = document.createElement("button");
+    fullBtn.textContent = "Full Test (240 Questions)";
+    fullBtn.addEventListener("click", function () {
+      state.mode = "full";
+      state.lastMode = "full";
+      state.lastWeek = null;
+      state.index = 0;
+      state.answers = {};
+      currentQuestions = Q.slice();
+      save();
+      render();
+    });
+    options.appendChild(fullBtn);
+
+    for (var week = 1; week <= 12; week++) {
+      var weekBtn = document.createElement("button");
+      weekBtn.textContent = "Week " + week + " Test (20 Questions)";
+      weekBtn.addEventListener(
+        "click",
+        (function (w) {
+          return function () {
+            state.mode = "week";
+            state.week = w;
+            state.lastMode = "week";
+            state.lastWeek = w;
+            state.index = 0;
+            state.answers = {};
+            currentQuestions = getWeekQuestions(w);
+            save();
+            render();
+          };
+        })(week),
+      );
+      options.appendChild(weekBtn);
+    }
+
+    main.appendChild(options);
+  }
+
   function renderQuestion() {
-    var q = Q[state.index];
+    if (backBtn) backBtn.style.display = "inline-flex";
+    var q = currentQuestions[state.index];
     var rec = state.answers[q.n];
 
-    progressEl.textContent = "Question " + (state.index + 1) + " / " + Q.length;
+    progressEl.textContent =
+      "Question " + (state.index + 1) + " / " + currentQuestions.length;
     main.innerHTML = "";
 
     var h = document.createElement("h1");
@@ -96,7 +181,8 @@
 
     var next = document.createElement("button");
     next.id = "next";
-    next.textContent = state.index === Q.length - 1 ? "Finish" : "Next";
+    next.textContent =
+      state.index === currentQuestions.length - 1 ? "Finish" : "Next";
     next.addEventListener("click", function () {
       state.index += 1;
       save();
@@ -120,7 +206,9 @@
         var sel = selectedKeys();
         var correct =
           sel.length === q.correct.length &&
-          q.correct.every(function (k) { return sel.indexOf(k) !== -1; });
+          q.correct.every(function (k) {
+            return sel.indexOf(k) !== -1;
+          });
         state.answers[q.n] = { selected: sel, correct: correct };
         save();
         reveal(q, state.answers[q.n]);
@@ -157,16 +245,19 @@
   }
 
   function renderScore() {
+    if (backBtn) backBtn.style.display = "inline-flex";
     progressEl.textContent = "Result";
     main.innerHTML = "";
 
-    var right = 0, wrong = 0;
-    Q.forEach(function (q) {
+    var right = 0,
+      wrong = 0;
+    currentQuestions.forEach(function (q) {
       var a = state.answers[q.n];
       if (!a) return;
       if (a.correct) right++;
       else wrong++;
     });
+    var totalAnswered = right + wrong;
 
     var title = document.createElement("h1");
     title.className = "q";
@@ -176,7 +267,12 @@
     var total = document.createElement("p");
     total.className = "score";
     total.innerHTML =
-      "You answered <b>" + right + "</b> of " + (right + wrong) + " correctly.";
+      "You answered <b>" +
+      right +
+      "</b> of " +
+      totalAnswered +
+      " correctly out of " +
+      currentQuestions.length;
     main.appendChild(total);
 
     var c = document.createElement("p");
@@ -194,7 +290,26 @@
     var restart = document.createElement("button");
     restart.textContent = "Restart";
     restart.addEventListener("click", function () {
-      state = { index: 0, answers: {} };
+      if (state.lastMode === "full") {
+        state.mode = "full";
+        state.index = 0;
+        state.answers = {};
+        currentQuestions = Q.slice();
+        save();
+        render();
+        return;
+      }
+      if (state.lastMode === "week" && state.lastWeek) {
+        state.mode = "week";
+        state.week = state.lastWeek;
+        state.index = 0;
+        state.answers = {};
+        currentQuestions = getWeekQuestions(state.lastWeek);
+        save();
+        render();
+        return;
+      }
+      state.mode = null;
       save();
       render();
     });
@@ -203,8 +318,52 @@
   }
 
   function render() {
-    if (state.index >= Q.length) renderScore();
-    else renderQuestion();
+    if (!state.mode) {
+      renderHome();
+      return;
+    }
+    if (state.mode === "full") {
+      currentQuestions = Q.slice();
+      if (state.index >= currentQuestions.length) {
+        renderScore();
+        return;
+      }
+      renderQuestion();
+      return;
+    }
+    if (state.mode === "week") {
+      if (!state.week) {
+        renderHome();
+        return;
+      }
+      currentQuestions = getWeekQuestions(state.week);
+      if (state.index >= currentQuestions.length) {
+        renderScore();
+        return;
+      }
+      renderQuestion();
+      return;
+    }
+    renderHome();
+  }
+
+  if (backBtn) {
+    backBtn.addEventListener("click", function () {
+      state.mode = null;
+      save();
+      render();
+    });
+  }
+
+  if (
+    state.mode === null &&
+    typeof state.index === "number" &&
+    state.answers &&
+    Object.keys(state.answers).length > 0
+  ) {
+    state.mode = "full";
+    state.lastMode = "full";
+    currentQuestions = Q.slice();
   }
 
   render();
