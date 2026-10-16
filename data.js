@@ -95,7 +95,7 @@ window.QUESTIONS = [
 },
 {
 "key": "D",
-"text": "any input is inhibitory"
+"text": "any inhibitory input is active (equal to 1)"
 }
 ],
 "correct": [
@@ -1793,7 +1793,7 @@ window.QUESTIONS = [
 },
 {
 "key": "D",
-"text": "η = η0^(-k·t), i.e. η0 raised to the power -k·t"
+"text": "η = η0 · e^(-k·t)"
 }
 ],
 "correct": [
@@ -2168,7 +2168,7 @@ window.QUESTIONS = [
 },
 {
 "n": 84,
-"question": "In PCA, if the eigenvalue corresponding to the i-th principal component is λ_i and there are m data points (the data matrix is scaled by 1/m when forming the covariance matrix), the variance of the data along that principal component is:",
+"question": "In PCA, let X be the mean-centered data matrix with m data points, so that the covariance matrix is (1/m)XᵀX. If λ_i is the eigenvalue of XᵀX corresponding to the i-th principal component, the variance of the data along that principal component is:",
 "options": [
 {
 "key": "A",
