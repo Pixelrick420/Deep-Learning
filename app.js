@@ -95,7 +95,7 @@
     options.className = "home-options";
 
     var fullBtn = document.createElement("button");
-    fullBtn.textContent = "Full Test (240 Questions)";
+    fullBtn.textContent = "Full Test";
     fullBtn.addEventListener("click", function () {
       state.mode = "full";
       state.lastMode = "full";
@@ -110,7 +110,7 @@
 
     for (var week = 1; week <= 12; week++) {
       var weekBtn = document.createElement("button");
-      weekBtn.textContent = "Week " + week + " Test (20 Questions)";
+      weekBtn.textContent = "Week " + week;
       weekBtn.addEventListener(
         "click",
         (function (w) {
